@@ -20,19 +20,29 @@ public class Main {
 
         System.out.println("----Jogo da adivinhação!----");
         System.out.println("Um numéro aleatório foi gerado e você deve adivinhá-lo");
+        System.out.println("Você terá 5 Tentativas");
 
         int randomNumber = new Random().nextInt(100);
         Scanner console = new Scanner(System.in);
         int userInput = 0;
+        int tries = 1;
 
         while(true){
+            System.out.println(String.format("Tentativa %d",tries));
             System.out.println("Digite um número");
             userInput = console.nextInt();
-            if(userInput == randomNumber) break;
+            if(userInput == randomNumber) {
+                System.out.println("Você acertou!!!");
+                break;
+            }
             if(userInput > randomNumber) System.out.println("O numero digitado é maior que o número gerado");
             if(userInput < randomNumber) System.out.println("O numero digitado é menor que o número gerado");
+            if(tries == 5){
+                System.out.println("Você fracassou!!");
+                break;
+            }
+            tries += 1;
         }
-        System.out.println("Você acertou!!!");
         System.out.println("---FIM DO JOGO---");
     }
 }
